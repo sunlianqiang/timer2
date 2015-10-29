@@ -42,11 +42,21 @@ int handle_timeout()
     return 0;
 }
 
+int handle_timeout1()
+{
+    unsigned int time = get_systime_clock();
+    printf("time out,second: %u\n",time/1000);
+    return 0;
+}
+
 int main()
 {
     Timer _timer;
     _timer.open(1,handle_timeout);
+    Timer _timer1;
+    _timer1.open(2,handle_timeout1);
     TIMERMANAGE->Register(_timer);
+    TIMERMANAGE->Register(_timer1);
     TIMERMANAGE->start();
     getchar();
     return 0;
