@@ -30,6 +30,7 @@
 #include <sys/time.h>
 #include "Timer.h"
 
+using namespace std;
 
 TimerThread* TimerThread::_instance;
 

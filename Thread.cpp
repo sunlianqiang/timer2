@@ -26,6 +26,8 @@
 
 #include "Thread.h"
 
+using namespace std;
+
 Thread::Thread() {
 
 	// TODO Auto-generated constructor stub

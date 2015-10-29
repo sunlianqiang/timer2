@@ -29,6 +29,8 @@
 
 #include <pthread.h>
 
+using namespace std;
+
 class Thread {
 
 
