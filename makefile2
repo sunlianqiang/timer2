@@ -1,0 +1,14 @@
+objects = Timer.o Thread.o test.o
+test: $(objects) 
+	g++ -o test $(objects) -lpthread 
+test.o: test.cpp
+	g++ -c test.cpp
+Timer.o: Timer.h Timer.cpp
+	g++ -c Timer.h Timer.cpp
+Thread.o:Thread.h Thread.o
+	g++ -c Thread.h Thread.cpp -lpthread
+
+ctags:
+	ctags -R --c-types=+px
+clean:
+	rm $(objects) *.gch

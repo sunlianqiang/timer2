@@ -1,13 +1,13 @@
-test: Timer.o Thread.o test.o
-	g++ -o test Timer.o Thread.o test.o -lpthread 
-test.o: test.cpp
-	g++ -c test.cpp
-Timer.o: Timer.h Timer.cpp
-	g++ -c Timer.h Timer.cpp
-Thread.o:Thread.h Thread.o
-	g++ -c Thread.h Thread.cpp -lpthread
+#objects = Timer.o Thread.o test.o
+objects := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+test: $(objects) 
+	g++ -g -o test $(objects) -lpthread 
+test.o: 
+Timer.o: Timer.h
+Thread.o:Thread.h 
 
-clean:
-	rm test Timer.o Thread.o *.gch
+.PHONY: ctags clean 
 ctags:
 	ctags -R --c-types=+px
+clean:
+	$(RM) test $(objects) 
